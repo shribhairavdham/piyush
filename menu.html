@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Milk Dairy | Pure & Direct</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2D6A4F;
+            --accent-blue: #E9F5FF;
+            --milk-white: #FFFFFF;
+            --text-dark: #1B4332;
+            --price-green: #1B9D5E;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6fffa 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at top, #ffffff 0%, rgba(255,255,255,0) 70%);
+        }
+
+        .logo-area { font-weight: 700; font-size: 2rem; color: var(--primary-green); letter-spacing: -1px; }
+        .subtitle { color: #555; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        .container { max-width: 500px; margin: 0 auto; padding: 20px; }
+
+        .menu-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        h2 { text-align: center; margin-bottom: 30px; font-weight: 600; font-size: 1.4rem; }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            transition: transform 0.2s ease;
+        }
+        .menu-item:last-child { border: none; }
+        .menu-item:hover { transform: translateX(5px); }
+
+        .item-info { display: flex; align-items: center; gap: 15px; }
+        .icon { font-size: 1.5rem; }
+        .name { font-weight: 600; display: block; }
+        .desc { font-size: 0.75rem; color: #777; }
+
+        .price {
+            font-weight: 700;
+            color: var(--price-green);
+            background: #f0fff4;
+            padding: 5px 12px;
+            border-radius: 12px;
+            white-space: nowrap;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        .promise-item { font-size: 0.7rem; font-weight: 600; color: #2D6A4F; }
+
+        .cta-bar {
+            position: sticky;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .btn {
+            flex: 1;
+            padding: 15px;
+            border-radius: 15px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-call { background: var(--primary-green); color: white; }
+        .btn-wa { background: #25D366; color: white; }
+
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #888; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-area">Fresh Milk Dairy</div>
+    <div class="subtitle">Pure • Fresh • Direct from Farm</div>
+</header>
+
+<div class="container">
+    <div class="menu-card">
+        <h2>Our Daily Fresh List</h2>
+
+        <div class="menu-item">
+            <div class="item-info">
+                <span class="icon">🥛</span>
+                <div><span class="name">Cow Milk</span><span class="desc">Fresh daily supply</span></div>
+            </div>
+            <div class="price">₹45 / L</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-info">
+                <span class="icon">🥛</span>
+                <div><span class="name">Buffalo Milk</span><span class="desc">Rich & Creamy</span></div>
+            </div>
+            <div class="price">₹65 / L</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-info">
+                <span class="icon">🧀</span>
+                <div><span class="name">Paneer</span><span class="desc">Soft & Pure</span></div>
+            </div>
+            <div class="price">₹320 / kg</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-info">
+                <span class="icon">🍯</span>
+                <div><span class="name">Mitha Khoa</span><span class="desc">Authentic taste</span></div>
+            </div>
+            <div class="price">₹210 / kg</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-info">
+                <span class="icon">🧈</span>
+                <div><span class="name">Ghee</span><span class="desc">Farm fresh</span></div>
+            </div>
+            <div class="price">₹700 / kg</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-info">
+                <span class="icon">🥣</span>
+                <div><span class="name">Curd (Dahi)</span><span class="desc">Thick & Probiotic</span></div>
+            </div>
+            <div class="price">₹85 / kg</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-info">
+                <span class="icon">🥄</span>
+                <div><span class="name">Dhahi SAPARETA</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹45 / kg</div>
+        </div>
+		
+		 <div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">Sappal matter</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹110 / kg</div>
+        </div>
+		
+		 <div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">Chapp</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹65 / 500g</div>
+        </div>
+		
+		 <div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">Milk creem</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹450/ kg</div>
+        </div>
+		
+		
+		
+		
+		 <div class="menu-item">
+            <div class="item-info">
+		<h1>ON SUMMER SESON</h1>
+		</div>
+		</div>
+		
+		<div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">ICE CREEM</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹10rs.</div>
+        </div>
+		
+		
+		
+		<div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">Kesar milk creem</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹20rs.</div>
+        </div>
+		
+		
+		<div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">Badam Shek</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹40rs.</div>
+        </div>
+		
+		
+		
+		<div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">Kajju Shek</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹40rs.</div>
+        </div>
+		
+		
+		
+		<div class="menu-item">
+            <div class="item-info">
+		 <span class="icon">🥄</span>
+                <div><span class="name">FALUDA</span><span class="desc">Traditional bilona</span></div>
+            </div>
+            <div class="price">₹50rs.</div>
+        </div>
+		
+		
+		
+
+        <div class="promise-grid">
+            <div class="promise-item">🌿 100% Pure</div>
+            <div class="promise-item">🚫 No Chemicals</div>
+            <div class="promise-item">🚜 Daily Fresh</div>
+        </div>
+    </div>
+
+    <div class="cta-bar">
+        <a href="tel:+917440680970" class="btn btn-call">📞 Call Now</a>
+		
+		
+		
+		
+		
+	
+		
+		
+		
+        <a href="window.location.href='https://wa.me/917440680970?text=नमस्ते%20मैं%20आपसे%20संपर्क%20करना%20चाहता%20हूं'"  " Class="btn btn-wa">💬 WhatsApp</a>
+    </div>
+</div>
+
+
+
+
+ 
+			
+			
+			
+			
+
+<footer>
+    <strong>Green Valley Dairy</strong><br>
+    Plot 42, Farm Sector, Dairy Road<br>
+    +91 98765 43210
+</footer>
+
+</body>
+</html>
