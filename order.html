@@ -1,661 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Fresh Dairy Products – Easy, Fast & Trusted</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+<meta charset="UTF-8">
+<title>Milk Dairy Order</title>
+<link rel="stylesheet" href="style.css">
 <style>
 
-
-/* --- Global Reset & Variables --- */
-:root {
-    --color-primary: #1e88e5; /* Light Blue */
-    --color-secondary: #0d47a1; /* Darker Blue for hover */
-    --color-background: #ffffff; /* Clean White */
-    --color-light-gray: #f8f8f8;
-    --color-text: #333;
-    --border-radius-large: 12px;
-    --border-radius-small: 8px;
-    --whatsapp-green: #25D366;
-}
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: var(--color-light-gray);
-    color: var(--color-text);
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #74ebd5, #9face6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 20px auto;
-    display: flex; /* Setup for main content and cart side-by-side */
-    gap: 30px;
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-h1, h2, h3 {
-    margin-bottom: 15px;
-    color: var(--color-secondary);
+h1 {
+  text-align: center;
+  margin: 0;
+  color: #2c7be5;
+  font-weight: 600;
 }
 
-/* --- Buttons --- */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: none;
-    border-radius: var(--border-radius-small);
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 20px;
 }
 
-.btn-primary, .btn-checkout, .btn-action {
-    background-color: var(--color-primary);
-    color: white;
+.card {
+  background: #f8f9ff;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  box-shadow: inset 0 0 0 1px #e3e7ff;
 }
 
-.btn-primary:hover, .btn-checkout:hover, .btn-action:hover {
-    background-color: var(--color-secondary);
+h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-.btn-whatsapp {
-    background-color: var(--whatsapp-green);
-    color: white;
-    padding: 12px 20px;
-}
-.btn-whatsapp:hover {
-    background-color: #1DA84C;
-}
-.btn-add {
-    background-color: var(--color-light-gray);
-    color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-}
-.btn-add:hover {
-    background-color: var(--color-primary);
-    color: white;
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
 }
 
-
-/* --- 1️⃣ Header Section --- */
-header {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+input:focus, select:focus {
+  outline: none;
+  border-color: #2c7be5;
+  box-shadow: 0 0 0 2px rgba(44,123,229,0.2);
 }
 
-.logo {
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--color-primary);
+button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: var(--color-text);
-    font-weight: 500;
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-nav a:hover {
-    color: var(--color-primary);
+#qrBox {
+  display: none;
+  text-align: center;
+  margin-top: 10px;
 }
 
-.nav-button {
-    background-color: var(--color-primary);
-    color: white !important;
-    padding: 8px 15px;
-    border-radius: var(--border-radius-small);
+#qrBox img {
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 4px solid white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 }
 
-/* --- 2️⃣ Banner Section --- */
-.banner-section {
-    position: relative;
-    height: 400px;
-    background: linear-gradient(90deg, var(--color-background) 50%, rgba(200, 230, 255, 0.5) 100%);
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: 0 5%;
-    margin-bottom: 20px;
+.order-title {
+  margin-top: 20px;
 }
 
-.banner-content {
-    max-width: 500px;
-    z-index: 2;
-}
-
-.banner-content h1 {
-    font-size: 3em;
-    color: var(--color-secondary);
-}
-
-.banner-image {
-    position: absolute;
-    right: 5%;
-    height: 80%;
-    object-fit: contain;
-    opacity: 0.8;
-}
-
-/* --- 5️⃣ Cart Preview (Sidebar) --- */
-.cart-preview {
-    width: 300px;
-    padding: 20px;
-    background-color: var(--color-background);
-    border-radius: var(--border-radius-large);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    height: fit-content;
-    position: sticky;
-    top: 20px;
-}
-
-.cart-totals {
-    border-top: 1px solid var(--color-light-gray);
-    padding-top: 10px;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.cart-preview .btn-checkout {
-    width: 100%;
-    margin-top: 15px;
-    padding: 12px;
-}
-
-/* --- Main Content Area --- */
-.main-content {
-    flex-grow: 1;
-}
-
-section {
-    background-color: var(--color-background);
-    padding: 30px;
-    margin-bottom: 20px;
-    border-radius: var(--border-radius-large);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-/* --- 3️⃣ Category Menu --- */
-.categories-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-}
-
-.category-card {
-    background-color: var(--color-light-gray);
-    padding: 15px 20px;
-    border-radius: var(--border-radius-large);
-    text-align: center;
-    width: 120px;
-    flex-grow: 1;
-    transition: transform 0.2s, background-color 0.2s;
-    font-weight: bold;
-}
-.category-card:hover {
-    transform: translateY(-3px);
-    background-color: #e3f2fd; /* Very light blue */
-}
-
-.category-card i {
-    font-size: 2em;
-    color: var(--color-primary);
-    display: block;
-    margin-bottom: 5px;
-}
-
-.category-card .view-more {
-    display: block;
-    font-size: 0.8em;
-    color: var(--color-secondary);
-    text-decoration: none;
-    margin-top: 5px;
-}
-
-/* --- 4️⃣ Product List --- */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.product-card {
-    border: 1px solid var(--color-light-gray);
-    border-radius: var(--border-radius-large);
-    padding: 15px;
-    text-align: center;
-    transition: box-shadow 0.3s;
-}
-.product-card:hover {
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.product-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: var(--border-radius-small);
-    margin-bottom: 10px;
-}
-
-.product-card h4 {
-    color: var(--color-primary);
-    margin: 5px 0;
-}
-
-.product-card .price {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.add-to-cart {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.quantity-selector button {
-    background: var(--color-light-gray);
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-.quantity-selector span {
-    padding: 0 10px;
-    font-weight: bold;
-}
-
-/* --- 8️⃣ Delivery Info --- */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-.info-item {
-    padding: 15px;
-    background-color: #e3f2fd; /* Lightest blue background */
-    border-radius: var(--border-radius-small);
-    font-size: 0.95em;
-    font-weight: 500;
-}
-.info-item i {
-    color: var(--color-primary);
-    margin-right: 10px;
-}
-
-/* --- Payment & Location --- */
-.payment-location-section {
-    display: flex;
-    gap: 30px;
-}
-.payment-options, .service-area {
-    flex: 1;
-    padding: 20px;
-    background-color: var(--color-light-gray);
-    border-radius: var(--border-radius-large);
-}
-.map-placeholder {
-    height: 200px;
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--border-radius-small);
-    margin-bottom: 10px;
-}
-.service-area input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: var(--border-radius-small);
-}
-
-/* --- 6️⃣ & 7️⃣ Order Forms --- */
-.form-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.form-card {
-    flex: 1 1 calc(33.33% - 20px);
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: var(--border-radius-large);
-    min-width: 250px;
-}
-.form-card.full-width {
-    flex: 1 1 100%;
-}
-.form-card input, .form-card textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: var(--border-radius-small);
-}
-.form-card textarea {
-    height: 100px;
-    resize: vertical;
-}
-.form-card .note {
-    font-size: 0.8em;
-    color: #666;
-    margin-top: 5px;
-}
-
-/* --- 9️⃣ FAQ Section --- */
-.faq-section details {
-    border: 1px solid var(--color-light-gray);
-    border-radius: var(--border-radius-small);
-    margin-bottom: 10px;
-}
-.faq-section summary {
-    padding: 15px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: var(--color-light-gray);
-    border-radius: var(--border-radius-small);
-}
-.faq-section p {
-    padding: 15px;
-    border-top: 1px solid #eee;
-}
-
-/* --- 🔟 Footer Section --- */
-footer {
-    background-color: var(--color-secondary);
-    color: white;
-    padding: 40px 5%;
-    margin-top: 30px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-col {
-    min-width: 200px;
-}
-
-.footer-col h4 {
-    color: white;
-    margin-bottom: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding-bottom: 5px;
-}
-
-.footer-col p {
-    margin: 5px 0;
-}
-
-.social-links a {
-    color: white;
-    font-size: 1.5em;
-    margin-right: 15px;
-    transition: color 0.2s;
-}
-.social-links a:hover {
-    color: var(--color-primary);
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255,255,255,0.2);
-    font-size: 0.9em;
-}
-
-/* --- Mobile Responsiveness (For Clean UI) --- */
-@media (max-width: 900px) {
-    .container {
-        flex-direction: column; /* Stacks main content and cart on mobile */
-    }
-
-    .cart-preview {
-        position: static;
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .banner-section {
-        height: 300px;
-        text-align: center;
-        justify-content: center;
-        background: var(--color-background); /* Simpler background on small screens */
-    }
-    .banner-image {
-        display: none; /* Hide image for clean mobile banner */
-    }
-    .banner-content {
-        max-width: 100%;
-    }
-    .banner-content h1 {
-        font-size: 2em;
-    }
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
-    nav {
-        margin-top: 10px;
-    }
-    nav a {
-        margin: 0 8px;
-        display: inline-block;
-    }
-    .info-item {
-        font-size: 0.9em;
-    }
-    .payment-location-section {
-        flex-direction: column;
-    }
-    .form-card {
-        flex: 1 1 100%;
-    }
+.order-card {
+  background: linear-gradient(135deg, #eef2ff, #f8f9ff);
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 
 
 </style>
+</head>
 <body>
 
-    <header>
-        <div class="logo">🥛 Dairy Fresh</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#products">Products</a>
-            <a href="#order" class="nav-button">Order</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About Us</a>
-        </nav>
-    </header>
+<div class="container">
 
-    <section id="home" class="banner-section">
-        <div class="banner-content">
-            <h1>Order Fresh & Pure Dairy Items</h1>
-            <p>Delivered fresh at your doorstep. No middlemen.</p>
-            <a href="#products" class="btn btn-primary">Start Order</a>
-        </div>
-        
-        <img src="milk-bottle-placeholder.png" alt="Fresh Milk Bottle" class="banner-image">
-    </section>
+  <h1>🥛 Milk Dairy</h1>
+  <p class="subtitle">Fresh milk delivered daily</p>
 
-    <main class="container">
-        <aside class="cart-preview">
-            <h3>🛒 Your Order</h3>
-            <div id="cart-items">
-                <p class="empty-cart">Cart is Empty.</p>
-            </div>
-            <div class="cart-totals">
-                <p>Subtotal: <span>$0.00</span></p>
-                <p>Total: <span>$0.00</span></p>
-            </div>
-            <button class="btn btn-checkout">Checkout</button>
-        </aside>
+  <div class="card">
+    <h2>Customer Details</h2>
+    <input id="name" placeholder="Customer Name">
+    <input id="mobile" placeholder="Mobile Number">
+    <input id="address" placeholder="Delivery Address">
+  </div>
 
-        <section class="main-content">
-            <section id="products" class="category-menu">
-                <h2>Browse Our Freshness</h2>
-                <div class="categories-grid">
-                    <div class="category-card"><i class="fas fa-cow"></i> Milk <a href="#" class="view-more">View More</a></div>
-                    <div class="category-card"><i class="fas fa-cheese"></i> Curd <a href="#" class="view-more">View More</a></div>
-                    <div class="category-card"><i class="fas fa-droplet"></i> Ghee <a href="#" class="view-more">View More</a></div>
-                    <div class="category-card"><i class="fas fa-cube"></i> Paneer <a href="#" class="view-more">View More</a></div>
-                    <div class="category-card"><i class="fas fa-glass-whiskey"></i> Lassi <a href="#" class="view-more">View More</a></div>
-                    <div class="category-card"><i class="fas fa-butter"></i> Butter <a href="#" class="view-more">View More</a></div>
-                    <div class="category-card"><i class="fas fa-ice-cream"></i> Ice Cream <a href="#" class="view-more">View More</a></div>
-                    <div class="category-card"><i class="fas fa-candy-cane"></i> Sweet Items <a href="#" class="view-more">View More</a></div>
-                </div>
-            </section>
+  <div class="card">
+    <h2>Order Milk</h2>
+    <select id="milkType">
+      <option>Cow Milk</option>
+      <option>Buffalo Milk</option>
+      <option>Full Cream Milk</option>
+    </select>
 
-            <section class="product-list">
-                <h3>Our Best Sellers</h3>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <img src="milk-placeholder.png" alt="Full Cream Milk">
-                        <h4>Full Cream Milk</h4>
-                        <p class="description">Fresh, organic, pure, and rich.</p>
-                        <p class="price">$1.50 / Liter</p>
-                        <div class="add-to-cart">
-                            <div class="quantity-selector">
-                                <button>-</button>
-                                <span>1</span>
-                                <button>+</button>
-                            </div>
-                            <button class="btn btn-add">Add to Cart</button>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <img src="curd-placeholder.png" alt="Homemade Curd">
-                        <h4>Homemade Curd</h4>
-                        <p class="description">Thick, creamy, and probiotic-rich.</p>
-                        <p class="price">$2.00 / Kg</p>
-                        <div class="add-to-cart">
-                            <div class="quantity-selector">
-                                <button>-</button>
-                                <span>1</span>
-                                <button>+</button>
-                            </div>
-                            <button class="btn btn-add">Add to Cart</button>
-                        </div>
-                    </div>
-                    </div>
-            </section>
+    <input id="quantity" type="number" placeholder="Quantity (Litres)">
+  </div>
 
-            <section class="info-section">
-                <h2>Delivery & Guarantee</h2>
-                <div class="info-grid">
-                    <div class="info-item"><i class="fas fa-clock"></i> *Delivery Timing:* Next-morning delivery (6-9 AM).</div>
-                    <div class="info-item"><i class="fas fa-truck"></i> *Home Delivery Charges:* Free over $15. Flat $2 otherwise.</div>
-                    <div class="info-item"><i class="fas fa-hand-holding-dollar"></i> *Cash on Delivery:* Available, along with all online payment modes.</div>
-                    <div class="info-item"><i class="fas fa-leaf"></i> *Fresh & Pure Guarantee:* 100% natural and chemical-free.</div>
-                    <div class="info-item"><i class="fas fa-undo"></i> *Return Policy:* Replacement on damaged/spoiled products.</div>
-                </div>
-            </section>
+  <div class="card">
+    <h2>Payment Method</h2>
+    <select id="payment" onchange="toggleQR()">
+      <option>Cash on Delivery</option>
+      <option>UPI QR</option>
+    </select>
 
-            <section class="payment-location-section">
-                <div class="payment-options">
-                    <h3>Secure Payment Options</h3>
-                    <p><i class="fas fa-money-bill-wave"></i> Cash on Delivery (COD)</p>
-                    <p><i class="fas fa-credit-card"></i> Online Payments (UPI, QR Code, Cards, Net Banking)</p>
-                </div>
-                <div class="service-area">
-                    <h3>Our Service Area</h3>
-                    
-                    <div class="map-placeholder">
-                        <i class="fas fa-map-marked-alt"></i> Map of Delivery Zone
-                    </div>
-                    <input type="text" placeholder="Check Your Pin Code">
-                </div>
-            </section>
+    <div id="qrBox">
+      <p>Scan & Pay</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=yourupi@upi&pn=MilkDairy">
+    </div>
+  </div>
 
-            <section id="contact" class="order-forms">
-                <h2>Order Directly or Send Instructions</h2>
+  <button onclick="placeOrder()">Place Order</button>
 
-                <div class="form-container">
-                    <div class="form-card">
-                        <h4>📱 Order Through Mobile Number</h4>
-                        <input type="tel" placeholder="Enter Your Mobile Number">
-                        <button class="btn btn-action">Send Order Request</button>
-                        <p class="note">Team will call you within 5 minutes.</p>
-                    </div>
+  <h2 class="order-title">My Orders</h2>
+  <div id="orders"></div>
 
-                    <div class="form-card">
-                        <h4>💬 Order on WhatsApp</h4>
-                        <a href="https://wa.me/1234567890?text=I%20would%20like%20to%20place%20an%20order." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Order on WhatsApp</a>
-                        <p class="note">Auto-opens chat with a prepared message.</p>
-                    </div>
+</div>
 
-                    <div class="form-card full-width">
-                        <h4>✍️ Custom Order Message</h4>
-                        <textarea placeholder="Write custom order message here... (e.g., product requests, delivery timing, special instructions)"></textarea>
-                        <button class="btn btn-action">Submit Custom Order</button>
-                    </div>
-                </div>
-            </section>
 
-            <section class="faq-section">
-                <h2>Frequently Asked Questions</h2>
-                <details>
-                    <summary>How fast will my order arrive?</summary>
-                    <p>Orders placed before 10 PM are delivered the next morning between 6 AM and 9 AM.</p>
-                </details>
-                <details>
-                    <summary>Is milk pure & chemical-free?</summary>
-                    <p>Yes, we guarantee 100% pure, organic, and chemical-free milk, tested daily on the farm.</p>
-                </details>
-                </section>
+<script src="script.js"></script>
+<script>  function toggleQR() {
+  let payment = document.getElementById("payment").value;
+  document.getElementById("qrBox").style.display =
+    payment === "UPI QR" ? "block" : "none";
+	
+	document.getElementById("qrBox").style.display =
+  payment === "UPI QR" ? "block" : "none";
 
-        </section> </main> <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>Dairy Fresh</h4>
-                <p>123 Farm Road, Dairy City, DC 10001</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Support</h4>
-                <p>📞 +1 (555) 123-4567</p>
-                <p>📧 support@dairyfresh.com</p>
-            </div>
-            <div class="footer-col">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            &copy; 2025 Dairy Fresh. All Rights Reserved.
-        </div>
-    </footer>
+}
+
+function placeOrder() {
+  let name = document.getElementById("name").value;
+  let mobile = document.getElementById("mobile").value;
+  let address = document.getElementById("address").value;
+  let milkType = document.getElementById("milkType").value;
+  let quantity = document.getElementById("quantity").value;
+  let payment = document.getElementById("payment").value;
+
+  if (!name || !mobile || !address || !quantity) {
+    alert("Please fill all details");
+    return;
+  }
+
+  let order = {
+    name,
+    mobile,
+    address,
+    milkType,
+    quantity,
+    payment,
+    date: new Date().toLocaleString()
+  };
+
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  orders.push(order);
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  alert("Order Placed Successfully 🥛");
+  showOrders();
+}
+
+function showOrders() {
+  let orders = JSON.parse(localStorage.getItem("orders")) || [];
+  let box = document.getElementById("orders");
+  box.innerHTML = "";
+
+  orders.forEach(o => {
+    box.innerHTML += `
+      <div class="order-card">
+        <b>${o.milkType}</b><br>
+        Quantity: ${o.quantity} L<br>
+        Payment: ${o.payment}<br>
+        Date: ${o.date}
+      </div>
+    `;
+  });
+}
+
+showOrders();
+  </script>
 
 </body>
 </html>
